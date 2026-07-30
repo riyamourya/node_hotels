@@ -1,11 +1,13 @@
 const express = require ('express');
 
-
 const app = express();
 const db = require('./db');
+require('dotenv').config();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());//req.body
+const PORT = process.env.PORT || 3000;
+
 
 
 
@@ -22,6 +24,8 @@ const menuitemRoutes = require('./routes/menuitemRoutes')
 // Use the router
 app.use('/menu', menuitemRoutes);
 app.use('/person', personRoutes);
+
+
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
